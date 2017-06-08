@@ -5,11 +5,11 @@ import java.util.List;
 import comp3350.srsys.application.Main;
 import comp3350.srsys.application.Services;
 import comp3350.srsys.objects.SC;
-import comp3350.srsys.persistence.DataAccessStub;
+import comp3350.srsys.persistence.DataAccess;
 
 public class AccessSC
 {
-	private DataAccessStub dataAccess;
+	private DataAccess dataAccess;
 	private List<SC> elements;
 
 	private SC studentCourse;
@@ -21,7 +21,7 @@ public class AccessSC
 
 	public AccessSC()
 	{
-		dataAccess = (DataAccessStub) Services.getDataAccess(Main.dbName);
+		dataAccess = Services.getDataAccess(Main.dbName);
 		elements = null;
 		currentSC = 0;
 		currentCS = 0;
@@ -37,7 +37,7 @@ public class AccessSC
 		}
 		if (currentSC < elements.size())
 		{
-			studentCourse = (SC) elements.get(currentSC);
+			studentCourse = elements.get(currentSC);
 			currentSC++;
 		}
 		else
@@ -59,7 +59,7 @@ public class AccessSC
 		}
 		if (currentCS < elements.size())
 		{
-			studentCourse = (SC) elements.get(currentCS);
+			studentCourse = elements.get(currentCS);
 			currentCS++;
 		}
 		else

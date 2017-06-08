@@ -38,8 +38,8 @@ public class Calculate
 				}
 				else
 				{
-					element = (SC) elements.get(elementCount);
-					grade = ((SC) element).getGrade();
+					element = elements.get(elementCount);
+					grade = element.getGrade();
 					found = false;
 					if (grade.trim().equals(""))
 					{	// found a course in progress, no grade yet

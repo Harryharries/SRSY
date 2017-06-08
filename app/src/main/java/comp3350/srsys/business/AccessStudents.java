@@ -6,18 +6,18 @@ import java.util.List;
 import comp3350.srsys.application.Main;
 import comp3350.srsys.application.Services;
 import comp3350.srsys.objects.Student;
-import comp3350.srsys.persistence.DataAccessStub;
+import comp3350.srsys.persistence.DataAccess;
 
 public class AccessStudents
 {
-	private DataAccessStub dataAccess;
+	private DataAccess dataAccess;
 	private List<Student> students;
 	private Student student;
 	private int currentStudent;
 
 	public AccessStudents()
 	{
-		dataAccess = (DataAccessStub) Services.getDataAccess(Main.dbName);
+		dataAccess = Services.getDataAccess(Main.dbName);
 		students = null;
 		student = null;
 		currentStudent = 0;
@@ -40,7 +40,7 @@ public class AccessStudents
         }
         if (currentStudent < students.size())
         {
-            student = (Student) students.get(currentStudent);
+            student = students.get(currentStudent);
             currentStudent++;
         }
         else
@@ -64,7 +64,7 @@ public class AccessStudents
 			students = dataAccess.getStudentRandom(new Student(studentID));
 			if (students.size()==1)
 			{
-				student = (Student) students.get(0);
+				student = students.get(0);
 			}
 		}
 		return student;

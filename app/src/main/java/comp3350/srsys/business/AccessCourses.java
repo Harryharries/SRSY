@@ -5,19 +5,18 @@ import java.util.List;
 import comp3350.srsys.application.Main;
 import comp3350.srsys.application.Services;
 import comp3350.srsys.objects.Course;
-import comp3350.srsys.objects.Student;
-import comp3350.srsys.persistence.DataAccessStub;
+import comp3350.srsys.persistence.DataAccess;
 
 public class AccessCourses
 {
-	private DataAccessStub dataAccess;
+	private DataAccess dataAccess;
 	private List<Course> courses;
 	private Course course;
 	private int currentCourse;
 
 	public AccessCourses()
 	{
-		dataAccess = (DataAccessStub) Services.getDataAccess(Main.dbName);
+		dataAccess = Services.getDataAccess(Main.dbName);
 		courses = null;
 		course = null;
 		currentCourse = 0;
@@ -39,7 +38,7 @@ public class AccessCourses
 		}
 		if (currentCourse < courses.size())
 		{
-			course = (Course) courses.get(currentCourse);
+			course = courses.get(currentCourse);
 			currentCourse++;
 		}
 		else
@@ -57,7 +56,7 @@ public class AccessCourses
 		currentCourse = 0;
 		if (currentCourse < courses.size())
 		{
-			course = (Course) courses.get(currentCourse);
+			course = courses.get(currentCourse);
 			currentCourse++;
 		}
 		else
